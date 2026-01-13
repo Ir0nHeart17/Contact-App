@@ -20,7 +20,7 @@ interface ContactDao {
     @Query ("SELECT * FROM Contact_Table ORDER by dateOfCreation ASC" )
     fun getContactsSortedByDateOfCreation(): Flow<List<Contact>>
 
-    @Query ("SELECT * FROM Contact_Table ORDER by phoneNumber ASC" )
+    @Query ("SELECT * FROM Contact_Table ORDER by phone ASC" )
     fun getContactsSortedByPhoneNumber(): Flow<List<Contact>>
 
 

@@ -5,6 +5,9 @@ plugins {
 
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+
+
+
 }
 
 android {
@@ -53,7 +56,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.material)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -62,22 +66,23 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    // For Room (Database)
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
+    // 2. Room (Database) - Use KSP ONLY
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
-    implementation("com.google.dagger:hilt-android:2.57.1")
-    ksp("com.google.dagger:hilt-android-compiler:2.57.1")
+    // 3. Dagger Hilt
+    implementation(libs.google.dagger.hilt)
+    ksp(libs.google.dagger.hilt.compiler)
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
-
-    // 1. Core KTX (Always needed)
-    implementation("androidx.core:core-ktx:1.12.0")
-
-    // For the viewModel() function
+    // 4. Lifecycle & Navigation
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-
-    // For Navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // 5. UI Extras
+    implementation("androidx.compose.material:material-icons-extended-android")
+
+
 
 }
